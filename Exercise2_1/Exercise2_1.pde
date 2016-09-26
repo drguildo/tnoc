@@ -8,7 +8,7 @@ void setup() {
   size(1280, 720);
 
   wind = new PVector(0.01, 0);
-  gravity = new PVector(0, 0.1);
+  gravity = new PVector(0, 0.01);
 
   b = new Balloon(width / 2, height / 2);
 
