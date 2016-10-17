@@ -46,6 +46,5 @@ void draw() {
 }
 
 void mouseClicked() {
-  println("clicked");
   movers = (Mover[])append(movers, new Mover(random(1, 4), mouseX, mouseY));
 }
