@@ -1,22 +1,33 @@
-float off = 0.0;
+float frictionCoefficient = 0.4;
+float gravityAmount = 0.4;
+
+ArrayList<Mover> movers;
 
 void setup() {
-  size(800, 360);
+  size(1280, 720);
+
+  movers = new ArrayList<Mover>();
 }
 
 void draw() {
-  loadPixels();
-  float xoff = 0.0;
-  for (int x = 0; x < width; x++) {
-    float yoff = 0.0;
-    for (int y = 0; y < height; y++) {
-      float bright = map(noise(off + xoff, yoff), 0, 1, 0, 255);
-      pixels[x+y*width] = color(bright);
-      yoff += 0.01;
-    }
-    xoff += 0.01;
-  }  
-  updatePixels();
-  
-  off += 0.01;
+  background(#FFFFFF);
+
+  PVector friction, gravity;
+  for (Mover m : movers) {
+    friction = m.velocity.copy();
+    friction.mult(-1);
+    friction.normalize();
+    friction.mult(frictionCoefficient);
+    m.applyForce(friction);
+
+    gravity = new PVector(0, gravityAmount * m.mass);
+    m.applyForce(gravity);
+
+    m.update();
+    m.draw();
+  }
+}
+
+void mousePressed() {
+  movers.add(new Mover(mouseX, mouseY, random(2, 8)));
 }
