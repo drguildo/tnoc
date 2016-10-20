@@ -17,7 +17,7 @@ void draw() {
     m.applyGravity(gravityAmount);
     
     m.update();
-    m.draw();
+    m.display();
   }
 }
 
