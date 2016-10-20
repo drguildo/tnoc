@@ -27,6 +27,18 @@ class Mover {
     applyForce(gravity);
   }
 
+  void applyDrag(Liquid l) {
+    float speed = velocity.mag();
+    float dragMagnitude = l.coefficient * speed * speed;
+
+    PVector drag = velocity.copy();
+    drag.mult(-1);
+    drag.normalize();
+    drag.mult(dragMagnitude);
+
+    applyForce(drag);
+  }
+
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
@@ -36,8 +48,10 @@ class Mover {
   }
 
   void display() {
-    fill(127, 127);
-    ellipse(location.x, location.y, mass * 16, mass * 16);
+    stroke(0);
+    strokeWeight(2);
+    fill(127, 200);
+    ellipse(location.x, location.y, mass*16, mass*16);
   }
 
   void checkEdges() {
