@@ -1,10 +1,10 @@
-float frictionCoefficient = 0.4;
-float gravityAmount = 0.4;
+float frictionCoefficient = 0.05;
+float gravityAmount = 0.1;
 
 ArrayList<Mover> movers;
 
 void setup() {
-  size(1280, 720);
+  size(640, 280);
 
   movers = new ArrayList<Mover>();
 }
@@ -29,5 +29,5 @@ void draw() {
 }
 
 void mousePressed() {
-  movers.add(new Mover(mouseX, mouseY, random(2, 8)));
+  movers.add(new Mover(mouseX, mouseY, random(1, 4)));
 }
