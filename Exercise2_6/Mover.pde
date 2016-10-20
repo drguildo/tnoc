@@ -56,8 +56,6 @@ class Mover {
   }
 
   void checkEdges() {
-    println(location.x + len);
-    
     if (location.x + len > width) {
       location.x = width - len;
       velocity.x *= -1;
@@ -66,8 +64,6 @@ class Mover {
       velocity.x *= -1;
     }
     
-    println(location.y + len);
-
     if (location.y + len > height) {
       location.y = height - len;
       velocity.y *= -1;
