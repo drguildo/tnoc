@@ -12,17 +12,10 @@ void setup() {
 void draw() {
   background(#FFFFFF);
 
-  PVector friction, gravity;
   for (Mover m : movers) {
-    friction = m.velocity.copy();
-    friction.mult(-1);
-    friction.normalize();
-    friction.mult(frictionCoefficient);
-    m.applyForce(friction);
-
-    gravity = new PVector(0, gravityAmount * m.mass);
-    m.applyForce(gravity);
-
+    m.applyFriction(frictionCoefficient);
+    m.applyGravity(gravityAmount);
+    
     m.update();
     m.draw();
   }

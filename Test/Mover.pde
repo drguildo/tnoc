@@ -14,11 +14,24 @@ class Mover {
     acceleration.add(f);
   }
 
+  void applyFriction(float coefficient) {
+    PVector friction = velocity.copy();
+    friction.mult(-1);
+    friction.normalize();
+    friction.mult(coefficient);
+    applyForce(friction);
+  }
+
+  void applyGravity(float amount) {
+    PVector gravity = new PVector(0, amount * mass);
+    applyForce(gravity);
+  }
+
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
     acceleration.mult(0);
-    
+
     checkEdges();
   }
 
