@@ -32,5 +32,7 @@ void draw() {
 }
 
 void mousePressed() {
-  movers.add(new Mover(mouseX, mouseY, random(0.5, 3)));
+  if (mouseButton == LEFT) {
+    movers.add(new Mover(mouseX, mouseY, random(0.5, 3)));
+  }
 }
