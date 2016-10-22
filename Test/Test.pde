@@ -9,7 +9,7 @@ ArrayList<Mover> movers;
 void setup() {
   size(640, 360);
 
-  liquid = new Liquid(0, height / 2, width, height / 2, dragCoefficient);
+  liquid = new Liquid(0, height / 1.5, width, height / 1.5, dragCoefficient);
 
   movers = new ArrayList<Mover>();
 }
