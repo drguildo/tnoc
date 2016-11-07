@@ -16,7 +16,7 @@ void setup() {
 
 void draw() {
   background(#FFFFFF);
-  
+
   a.display();
 
   for (Mover m : movers) {

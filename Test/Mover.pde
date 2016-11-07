@@ -2,6 +2,8 @@ class Mover {
   PVector location, velocity, acceleration;
   float mass;
 
+  float angle = 0, angularVelocity = 0, angularAcceleration = 0;
+
   Mover(float x, float y, float mass) {
     this.location = new PVector(x, y);
     this.velocity = new PVector(0, 0);
@@ -42,6 +44,11 @@ class Mover {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
+
+    angularAcceleration = acceleration.x / 10.0;
+    angularVelocity += constrain(angularAcceleration, -0.1, 0.1);
+    angle += angularVelocity;
+
     acceleration.mult(0);
 
     checkEdges();
@@ -51,7 +58,13 @@ class Mover {
     stroke(0);
     strokeWeight(2);
     fill(127, 200);
-    ellipse(location.x, location.y, mass*16, mass*16);
+    rectMode(CENTER);
+
+    pushMatrix();
+    translate(location.x, location.y);
+    rotate(angle);
+    rect(0, 0, mass*16, mass*16);
+    popMatrix();
   }
 
   void checkEdges() {
